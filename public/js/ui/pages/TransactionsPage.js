@@ -10,15 +10,18 @@ class TransactionsPage {
    * Сохраняет переданный элемент и регистрирует события
    * через registerEvents()
    * */
-  constructor( element ) {
+  LastOptions = null;
 
+  constructor(element) {
+    this.element = element;
+    this.registerEvents();
   }
 
   /**
    * Вызывает метод render для отрисовки страницы
    * */
   update() {
-
+    this.render(this.LastOptions);
   }
 
   /**
@@ -28,7 +31,13 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
+    this.element.querySelector('.remove-account').onclick = (e) => {
+      this.removeAccount();
+    }
 
+    /*this.element.querySelector('.transaction__remove').onclick = (e) => {
+      this.removeTransaction();
+    }*/
   }
 
   /**
@@ -41,7 +50,13 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-
+    Account.remove({ id: 1 }, (err, resp) => {
+      if (resp && resp.success) {
+        App.updateWidgets();
+        App.updateForms();
+        this.clear();
+      }
+    })
   }
 
   /**
@@ -50,7 +65,7 @@ class TransactionsPage {
    * По удалению транзакции вызовите метод App.update(),
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
-  removeTransaction( id ) {
+  removeTransaction(id) {
 
   }
 
@@ -60,8 +75,19 @@ class TransactionsPage {
    * Получает список Transaction.list и полученные данные передаёт
    * в TransactionsPage.renderTransactions()
    * */
-  render(options){
+  render(options) {
+    this.LastOptions = options;
+    Account.get(options.account_id, (err, resp) => {
+      if (resp && resp.succes) {
+        this.renderTitle(resp.data.name);
+      }
+    });
 
+    Transaction.list(options, (err, resp) => {
+      if (resp && resp.succes) {
+        this.renderTransactions(resp.account_id);
+      }
+    })
   }
 
   /**
@@ -76,15 +102,15 @@ class TransactionsPage {
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
-  renderTitle(name){
-
+  renderTitle(name) {
+    this.element.querySelector('.content-title').innerText = name;
   }
 
   /**
    * Форматирует дату в формате 2019-03-10 03:20:41 (строка)
    * в формат «10 марта 2019 г. в 03:20»
    * */
-  formatDate(date){
+  formatDate(date) {
 
   }
 
@@ -92,7 +118,7 @@ class TransactionsPage {
    * Формирует HTML-код транзакции (дохода или расхода).
    * item - объект с информацией о транзакции
    * */
-  getTransactionHTML(item){
+  getTransactionHTML(item) {
 
   }
 
@@ -100,7 +126,7 @@ class TransactionsPage {
    * Отрисовывает список транзакций на странице
    * используя getTransactionHTML
    * */
-  renderTransactions(data){
+  renderTransactions(data) {
 
   }
 }
