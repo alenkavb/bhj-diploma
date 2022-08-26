@@ -27,13 +27,13 @@ const createRequest = (options = {}) => {
       if (xhr.status === 200) {
         const response = xhr.response;
 
-        if (response && response.success) {
+        if (response?.success) {
           resp = response;
         } else {
           err = response;
         }
       } else {
-        err = new Error(xhr.responseText);
+        err = new Error('Ошибка соединения');
       }
 
       options.callback(err, resp);

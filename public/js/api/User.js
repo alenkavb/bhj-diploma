@@ -64,7 +64,7 @@ class User {
         if (response && response.user) {
           this.setCurrent(response.user);
         }
-        
+
         callback(err, response);
       }
     });
@@ -84,6 +84,8 @@ class User {
       callback: (err, response) => {
         if (response && response.user) {
           this.setCurrent(response.user);
+        } else {
+          alert(JSON.parse(response.error));
         }
 
         callback(err, response);
