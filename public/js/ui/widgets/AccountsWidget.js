@@ -39,8 +39,7 @@ class AccountsWidget {
     for(let el of document.getElementsByClassName('account')){
       el.onclick = (e) => {
         e.preventDefault();
-        console.log(el);
-        AccountsWidget.onSelectAccount(el);
+        this.onSelectAccount(el);
       }
     }
   }
@@ -82,9 +81,13 @@ class AccountsWidget {
    * */
   onSelectAccount(element) {
     console.log(element);
-    document.getElementsByClassName('active').classList.remove('active');
-    element.classList.add('active');
-    App.showPage('transactions', { account_id: element.id });
+    const activeAccount = this.element.getElementsByClassName('active');
+    console.log (activeAccount.className);
+    if (activeAccount.length !== 0) {
+      activeAccount.classList.remove('active');
+    }
+    //element.classList.add('active');
+    App.showPage('transactions', { account_id: element.dataset.id });
   }
 
   /**

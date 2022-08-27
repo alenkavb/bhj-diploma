@@ -78,16 +78,18 @@ class TransactionsPage {
   render(options) {
     if (!options)
       return;
-
+    console.log("render options", options);
     this.LastOptions = options;
+    console.log(this.LastOptions);
     Account.get(options.account_id, (err, resp) => {
-      if (resp && resp.succes) {
+      if (resp && resp.success) {
+        console.log(resp.data.name);
         this.renderTitle(resp.data.name);
       }
     });
 
     Transaction.list(options, (err, resp) => {
-      if (resp && resp.succes) {
+      if (resp && resp.success) {
         this.renderTransactions(resp.account_id);
       }
     })
@@ -122,7 +124,27 @@ class TransactionsPage {
    * item - объект с информацией о транзакции
    * */
   getTransactionHTML(item) {
-
+    return `<div class="transaction ${item.type} row">
+              <div class="col-md-7 transaction__details">
+                <div class="transaction__icon">
+                  <span class="fa fa-money fa-2x"></span>
+                </div>
+                <div class="transaction__info">
+                  <h4 class="transaction__title">${item.name}</h4>
+                  <div class="transaction__date">${item.created_at}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="transaction__summ">
+                  ${item.sum} <span class="currency">₽</span>
+                </div>
+              </div>
+              <div class="col-md-2 transaction__controls">
+                <button class="btn btn-danger transaction__remove" ${item.id}="12">
+                  <i class="fa fa-trash"></i>  
+                </button>
+              </div>
+            </div>`
   }
 
   /**
