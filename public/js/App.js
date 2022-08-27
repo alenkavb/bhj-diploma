@@ -135,6 +135,7 @@ class App {
    * и передаёт туда объект options
    * */
   static showPage(pageName, options) {
+    console.log(pageName, options);
     const page = this.getPage(pageName);
     page.render(options);
   }
@@ -155,7 +156,6 @@ class App {
     }
     this.element.classList.add(`app_${state}`);
     this.state = state;
-
     if (state === "user-logged") {
       this.update();
     }

@@ -14,10 +14,13 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
-    //if (isEmpty(element)) throw new Error('Невалидное значение');
+    if (typeof(element) === "undefined")
+      throw new Error('Невалидное значение');
+
     this.element = element;
-    this.registerEvents();
-    this.update();
+    // this.registerEvents();
+    // TODO: надо ли вызывать это??
+    // this.update();
   }
 
   /**
@@ -31,15 +34,15 @@ class AccountsWidget {
     document.querySelector('.create-account').onclick = (e) => {
       App.getModal('createAccount').open();
     }
-    const accounts = this.element.querySelectorAll('.account');
-    console.dir(accounts);
-    accounts.forEach(el => {
+    const accounts = this.element.getElementsByClassName('account');
+
+    for(let el of document.getElementsByClassName('account')){
       el.onclick = (e) => {
         e.preventDefault();
         console.log(el);
         AccountsWidget.onSelectAccount(el);
       }
-    })
+    }
   }
 
   /**
@@ -78,7 +81,7 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount(element) {
-    console.log(element)
+    console.log(element);
     document.getElementsByClassName('active').classList.remove('active');
     element.classList.add('active');
     App.showPage('transactions', { account_id: element.id });
@@ -105,6 +108,9 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data) {
+    // TODO: откуда дублирование вызовов?
+    // console.log('---', data);
     this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(data));
+    this.registerEvents();
   }
 }

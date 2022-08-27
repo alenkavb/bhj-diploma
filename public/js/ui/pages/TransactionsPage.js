@@ -76,6 +76,9 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options) {
+    if (!options)
+      return;
+
     this.LastOptions = options;
     Account.get(options.account_id, (err, resp) => {
       if (resp && resp.succes) {
