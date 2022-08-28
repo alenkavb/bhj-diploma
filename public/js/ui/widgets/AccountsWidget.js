@@ -80,13 +80,11 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount(element) {
-    console.log(element);
-    const activeAccount = this.element.getElementsByClassName('active');
-    console.log (activeAccount.className);
-    if (activeAccount.length !== 0) {
-      activeAccount.classList.remove('active');
+    const activeAccount = document.getElementsByClassName('active');
+    if (activeAccount.length > 0) {
+      activeAccount[0].classList.remove('active');
     }
-    //element.classList.add('active');
+    element.classList.add('active');
     App.showPage('transactions', { account_id: element.dataset.id });
   }
 
