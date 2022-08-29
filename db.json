@@ -11,6 +11,18 @@
       "email": "ivan@ivan",
       "password": "ivan",
       "id": "2k76zdygl7brw5a0"
+    },
+    {
+      "name": "123",
+      "email": "123@demo",
+      "password": "123",
+      "id": "305xz74kl7eawtsx"
+    },
+    {
+      "name": "test",
+      "email": "test@test",
+      "password": "test",
+      "id": "305xz6f0l7ed120u"
     }
   ],
   "accounts": [
@@ -38,6 +50,26 @@
       "name": "sdcascd",
       "user_id": "1",
       "id": "2k76zmmkl7d64jem"
+    },
+    {
+      "name": "ВТБ",
+      "user_id": "1",
+      "id": "305xz6kl7ea82ni"
+    },
+    {
+      "name": "Сбербанк",
+      "user_id": "1",
+      "id": "305xz74kl7eaw6zk"
+    },
+    {
+      "name": "Тинькофф",
+      "user_id": "305xz6f0l7ed120u",
+      "id": "305xz8t0l7edfk9d"
+    },
+    {
+      "name": "Наличные",
+      "user_id": "305xz6f0l7ed120u",
+      "id": "305xz8t0l7edhskl"
     }
   ],
   "transactions": [
@@ -175,6 +207,105 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "305xz86kl7ee0uhz",
+      "type": "income",
+      "name": "Кэшбэк",
+      "sum": 1000,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T06:36:42.982Z"
+    },
+    {
+      "id": "305xz5xol7ee6ogn",
+      "type": "expense",
+      "name": "Покупка чайника",
+      "sum": 500,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T06:41:15.094Z"
+    },
+    {
+      "id": "305xz60l7ee8jsn",
+      "type": "income",
+      "name": "Аванс",
+      "sum": 12400,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T06:42:42.358Z"
+    },
+    {
+      "id": "305xz5tol7eem79i",
+      "type": "income",
+      "name": "Отдали долг",
+      "sum": 2000,
+      "account_id": "305xz8t0l7edhskl",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T06:53:19.301Z"
+    },
+    {
+      "id": "305xz9hol7efmbim",
+      "type": "expense",
+      "name": "проезд",
+      "sum": 20,
+      "account_id": "305xz8t0l7edhskl",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T07:21:24.429Z"
+    },
+    {
+      "id": "305xz6qsl7efs042",
+      "type": "expense",
+      "name": "потерял",
+      "sum": 50,
+      "account_id": "305xz8t0l7edhskl",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T07:25:49.585Z"
+    },
+    {
+      "id": "305xz9x8l7efty29",
+      "type": "expense",
+      "name": "Покупка чайника",
+      "sum": 200,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T07:27:20.240Z"
+    },
+    {
+      "id": "305xza88l7efvglo",
+      "type": "expense",
+      "name": "Покупка чайника",
+      "sum": 300,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T07:28:30.923Z"
+    },
+    {
+      "id": "305xz6wwl7efxu4z",
+      "type": "expense",
+      "name": "Покупка пылесоса",
+      "sum": 3000,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T07:30:21.778Z"
+    },
+    {
+      "id": "305xz3xgl7eitjvk",
+      "type": "income",
+      "name": "ЗП",
+      "sum": 30000,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T08:51:00.703Z"
+    },
+    {
+      "id": "305xz3xgl7eivkso",
+      "type": "income",
+      "name": "Субсидия",
+      "sum": 5000,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-29T08:52:35.208Z"
     }
   ]
 }

@@ -10,20 +10,23 @@ class TransactionsPage {
    * Сохраняет переданный элемент и регистрирует события
    * через registerEvents()
    * */
-  
+
   constructor(element) {
+    if (typeof (element) === "undefined")
+      throw new Error('Невалидное значение');
+
     this.element = element;
     this.registerEvents();
     this.LastOptions = null;
   }
-  
+
   /**
    * Вызывает метод render для отрисовки страницы
    * */
   update() {
     this.render(this.LastOptions);
   }
-  
+
   /**
    * Отслеживает нажатие на кнопку удаления транзакции
    * и удаления самого счёта. Внутри обработчика пользуйтесь
@@ -40,7 +43,7 @@ class TransactionsPage {
     //   this.removeTransaction();
     // }
   }
-  
+
   /**
    * Удаляет счёт. Необходимо показать диаголовое окно (с помощью confirm())
    * Если пользователь согласен удалить счёт, вызовите
@@ -51,6 +54,9 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
+    if (!this.LastOptions)
+      return;
+
     if (confirm('Вы действительно хотите удалить счет?')) {
       Account.remove({ id: this.LastOptions.account_id }, (err, resp) => {
         if (resp && resp.success) {
@@ -61,7 +67,7 @@ class TransactionsPage {
       })
     }
   }
-  
+
   /**
    * Удаляет транзакцию (доход или расход). Требует
    * подтверждеия действия (с помощью confirm()).
@@ -74,7 +80,7 @@ class TransactionsPage {
       App.update();
     }
   }
-  
+
   /**
    * С помощью Account.get() получает название счёта и отображает
    * его через TransactionsPage.renderTitle.
@@ -91,15 +97,15 @@ class TransactionsPage {
         this.renderTitle(resp.data.name);
       }
     });
-    
+
     Transaction.list(options, (err, resp) => {
-      this.LastOptions = options;
+      // this.LastOptions = options;
       if (resp && resp.success) {
         this.renderTransactions(resp.data);
       }
     })
   }
-  
+
   /**
    * Очищает страницу. Вызывает
    * TransactionsPage.renderTransactions() с пустым массивом.
@@ -109,14 +115,14 @@ class TransactionsPage {
     this.renderTransactions([]);
     this.renderTitle('Название счёта');
   }
-  
+
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name) {
     this.element.querySelector('.content-title').innerText = name;
   }
-  
+
   /**
    * Форматирует дату в формате 2019-03-10 03:20:41 (строка)
    * в формат «10 марта 2019 г. в 03:20»
@@ -125,7 +131,7 @@ class TransactionsPage {
     let parts = date.split(' ');
     let [year, mon, day] = parts[0].split('-');
     let [hour, min, sec] = parts[1].split(':');
-    
+
     let dt = new Date();
     dt.setFullYear(year);
     dt.setMonth(mon - 1);
@@ -134,9 +140,9 @@ class TransactionsPage {
     dt.setMinutes(min);
     dt.setSeconds(sec);
 
-    return `${dt.toLocaleDateString('ru-RU', {dateStyle: "long"})} в ${dt.toLocaleTimeString('ru-RU', {timeStyle: "short",})}`;
+    return `${dt.toLocaleDateString('ru-RU', { dateStyle: "long" })} в ${dt.toLocaleTimeString('ru-RU', { timeStyle: "short", })}`;
   }
-  
+
   /**
    * Формирует HTML-код транзакции (дохода или расхода).
    * item - объект с информацией о транзакции
@@ -166,7 +172,7 @@ class TransactionsPage {
     </div>
     `
   }
-  
+
   /**
    * Отрисовывает список транзакций на странице
    * используя getTransactionHTML
