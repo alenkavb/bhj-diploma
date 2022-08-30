@@ -18,7 +18,7 @@ class AccountsWidget {
       throw new Error('Невалидное значение');
 
     this.element = element;
-    this.registerEvents();
+    // this.registerEvents();
     // TODO: надо ли вызывать это??
     // this.update();
   }
@@ -82,9 +82,9 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount(element) {
-    console.log('Hello!');
     const activeAccount = document.getElementsByClassName('active');
     if (activeAccount.length > 0) {
+      console.log('remove class active');
       activeAccount[0].classList.remove('active');
     }
 
@@ -116,6 +116,6 @@ class AccountsWidget {
     // TODO: откуда дублирование вызовов?
     // console.log('---', data);
     this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(data));
-    //this.registerEvents();
+    this.registerEvents();
   }
 }

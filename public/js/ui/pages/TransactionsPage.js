@@ -16,7 +16,7 @@ class TransactionsPage {
       throw new Error('Невалидное значение');
 
     this.element = element;
-    this.registerEvents();
+    // this.registerEvents();
     this.LastOptions = null;
   }
 
@@ -39,9 +39,13 @@ class TransactionsPage {
       this.removeAccount();
     };
 
-    // this.element.querySelector('.transaction__remove').onclick = (e) => {
-    //   this.removeTransaction();
-    // }
+    const btnsRemoveTransaction = this.element.getElementsByClassName('transaction__remove')
+    console.log('transaction__remove', btnsRemoveTransaction);
+    for (let btn of btnsRemoveTransaction) {
+      btn.onclick = (e) => {
+        this.removeTransaction(btn.attributes[1].name);
+      }
+    }
   }
 
   /**
@@ -75,9 +79,13 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction(id) {
-    if (result = confirm('Вы действительно хотите удалить транзакцию?')) {
-      Transaction.remove(id)
-      App.update();
+    console.log('удаление транзакции id', id);
+    if (confirm('Вы действительно хотите удалить транзакцию?')) {
+      Transaction.remove({ id: id }, (err, resp) => {
+        if (resp && resp.success) {
+          App.update();
+        };
+      });
     }
   }
 
@@ -99,7 +107,7 @@ class TransactionsPage {
     });
 
     Transaction.list(options, (err, resp) => {
-      // this.LastOptions = options;
+      this.LastOptions = options;
       if (resp && resp.success) {
         this.renderTransactions(resp.data);
       }
@@ -114,6 +122,7 @@ class TransactionsPage {
   clear() {
     this.renderTransactions([]);
     this.renderTitle('Название счёта');
+    this.LastOptions = null;
   }
 
   /**
@@ -128,9 +137,10 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date) {
-    let parts = date.split(' ');
+    let parts = date.split('T');
     let [year, mon, day] = parts[0].split('-');
-    let [hour, min, sec] = parts[1].split(':');
+    let time = parts[1].split('.');
+    let [hour, min, sec] = time[0].split(':');
 
     let dt = new Date();
     dt.setFullYear(year);
@@ -179,8 +189,10 @@ class TransactionsPage {
    * */
   renderTransactions(data) {
     const content = document.querySelector('.content');
+    content.innerHTML = '';
     data.forEach(transaction => {
-      content.insertAdjacentHTML('beforeend', this.getTransactionHTML(transaction));
-    })
+      content.innerHTML += this.getTransactionHTML(transaction);
+    });
+    this.registerEvents();
   }
 }

@@ -245,15 +245,6 @@
       "created_at": "2022-08-29T06:53:19.301Z"
     },
     {
-      "id": "305xz9hol7efmbim",
-      "type": "expense",
-      "name": "проезд",
-      "sum": 20,
-      "account_id": "305xz8t0l7edhskl",
-      "user_id": "305xz6f0l7ed120u",
-      "created_at": "2022-08-29T07:21:24.429Z"
-    },
-    {
       "id": "305xz6qsl7efs042",
       "type": "expense",
       "name": "потерял",
@@ -306,6 +297,15 @@
       "account_id": "305xz8t0l7edfk9d",
       "user_id": "305xz6f0l7ed120u",
       "created_at": "2022-08-29T08:52:35.208Z"
+    },
+    {
+      "id": "305xzcdgl7fjikuo",
+      "type": "income",
+      "name": "наследство",
+      "sum": 150000,
+      "account_id": "305xz8t0l7edfk9d",
+      "user_id": "305xz6f0l7ed120u",
+      "created_at": "2022-08-30T01:58:14.543Z"
     }
   ]
 }
