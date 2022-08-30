@@ -85,7 +85,8 @@ class User {
         if (response && response.user) {
           this.setCurrent(response.user);
         } else {
-          alert(JSON.parse(response.error));
+          console.log(err);
+          alert(err.error);
         }
 
         callback(err, response);

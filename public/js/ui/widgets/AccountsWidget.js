@@ -35,8 +35,7 @@ class AccountsWidget {
       App.getModal('createAccount').open();
     }
     let accountsList = this.element.getElementsByClassName('account');
-    console.log('accounts list', accountsList);
-
+    
     for (let el of this.element.getElementsByClassName('account')) {
       el.onclick = (e) => {
         e.preventDefault();

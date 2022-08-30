@@ -35,12 +35,10 @@ class TransactionsPage {
    * */
   registerEvents() {
     this.element.querySelector('.remove-account').onclick = (e) => {
-      console.log('remove account', this);
       this.removeAccount();
     };
 
     const btnsRemoveTransaction = this.element.getElementsByClassName('transaction__remove')
-    console.log('transaction__remove', btnsRemoveTransaction);
     for (let btn of btnsRemoveTransaction) {
       btn.onclick = (e) => {
         this.removeTransaction(btn.attributes[1].name);
@@ -79,7 +77,6 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction(id) {
-    console.log('удаление транзакции id', id);
     if (confirm('Вы действительно хотите удалить транзакцию?')) {
       Transaction.remove({ id: id }, (err, resp) => {
         if (resp && resp.success) {

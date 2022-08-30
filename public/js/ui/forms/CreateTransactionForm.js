@@ -9,7 +9,6 @@ class CreateTransactionForm extends AsyncForm {
    * */
   constructor(element) {
     super(element);
-    console.log('constructor CreateTransactionForm worked');
     this.renderAccountsList();
   }
 
