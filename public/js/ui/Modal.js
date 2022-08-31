@@ -12,6 +12,9 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
+    if (typeof (element) === "undefined")
+      throw new Error('Невалидное значение');
+
     this.element = element;
     this.registerEvents();
   }

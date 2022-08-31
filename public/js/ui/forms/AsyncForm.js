@@ -13,6 +13,9 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
+    if (typeof (element) === "undefined")
+      throw new Error('Невалидное значение');
+
     this.element = element;
     this.registerEvents();
   }

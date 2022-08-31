@@ -12,6 +12,9 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
+    if (typeof (element) === "undefined")
+      throw new Error('Невалидное значение');
+
     this.element = element;
   }
 
@@ -24,7 +27,9 @@ class UserWidget {
    * */
   update() {
     const user = User.current();
-    const userName = document.querySelector('.user-name');
-    userName.innerHTML = user.name;
+    if (user) {
+      const userName = document.querySelector('.user-name');
+      userName.innerHTML = user.name;
+    }
   }
 }

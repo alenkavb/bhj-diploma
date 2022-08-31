@@ -48,8 +48,8 @@ class Sidebar {
       User.logout((err, resp) => {
         if (resp && resp.success) {
           App.setState('init');
-        }
-      })
+        };
+      });
     }
   }
 }
