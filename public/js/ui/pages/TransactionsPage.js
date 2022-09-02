@@ -134,9 +134,18 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date) {
-    let parts = date.split('T');
+    let parts, time;
+    if (date[10] === 'T') {
+      parts = date.split('T');
+    } else {
+      parts = date.split(' ');
+    }
+
     let [year, mon, day] = parts[0].split('-');
-    let time = parts[1].split('.');
+    if (date[19] === '.') {
+      time = parts[1].split('.');
+    }
+
     let [hour, min, sec] = time[0].split(':');
 
     let dt = new Date();
