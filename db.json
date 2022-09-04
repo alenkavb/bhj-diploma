@@ -7,12 +7,6 @@
       "id": "1"
     },
     {
-      "name": "Ivan",
-      "email": "ivan@ivan",
-      "password": "ivan",
-      "id": "2k76zdygl7brw5a0"
-    },
-    {
       "name": "123",
       "email": "123@demo",
       "password": "123",
@@ -23,18 +17,6 @@
       "email": "test@test",
       "password": "test",
       "id": "305xz6f0l7ed120u"
-    },
-    {
-      "name": "Ivan",
-      "email": "ivan@test",
-      "password": "123",
-      "id": "2k76zu3cl7g62oal"
-    },
-    {
-      "name": "proverka",
-      "email": "pr@pr",
-      "password": "prov",
-      "id": "2k76zu3cl7g6475t"
     }
   ],
   "accounts": [
@@ -54,11 +36,6 @@
       "id": "3"
     },
     {
-      "name": "ВТБ",
-      "user_id": "1",
-      "id": "305xz6kl7ea82ni"
-    },
-    {
       "name": "Тинькофф",
       "user_id": "305xz6f0l7ed120u",
       "id": "305xz8t0l7edfk9d"
@@ -69,14 +46,9 @@
       "id": "305xz8t0l7edhskl"
     },
     {
-      "name": "VTB",
-      "user_id": "305xz74kl7eawtsx",
-      "id": "2k76ztwhl7g500f3"
-    },
-    {
-      "name": "jkkhglhg",
-      "user_id": "2k76zdygl7brw5a0",
-      "id": "2k76ztwhl7g5jj8c"
+      "name": "qqq",
+      "user_id": "1",
+      "id": "2k76z1jnl7mq9ozr"
     }
   ],
   "transactions": [
@@ -295,33 +267,6 @@
       "account_id": "305xz8t0l7edfk9d",
       "user_id": "305xz6f0l7ed120u",
       "created_at": "2022-08-30T01:58:14.543Z"
-    },
-    {
-      "id": "2k76ztwhl7g50jt4",
-      "type": "income",
-      "name": "Avans",
-      "sum": 10000,
-      "account_id": "2k76ztwhl7g500f3",
-      "user_id": "305xz74kl7eawtsx",
-      "created_at": "2022-08-30T12:00:04.936Z"
-    },
-    {
-      "id": "2k76ztwhl7g5214u",
-      "type": "expense",
-      "name": "Restaurant",
-      "sum": 1500,
-      "account_id": "2k76ztwhl7g500f3",
-      "user_id": "305xz74kl7eawtsx",
-      "created_at": "2022-08-30T12:01:14.046Z"
-    },
-    {
-      "id": "2k76ztwhl7g5jw6j",
-      "type": "income",
-      "name": "test",
-      "sum": 500,
-      "account_id": "2k76ztwhl7g5jj8c",
-      "user_id": "2k76zdygl7brw5a0",
-      "created_at": "2022-08-30T12:15:07.435Z"
     }
   ]
 }

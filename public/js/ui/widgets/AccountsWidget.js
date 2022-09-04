@@ -18,7 +18,7 @@ class AccountsWidget {
       throw new Error('Невалидное значение');
 
     this.element = element;
-    // this.registerEvents();
+    this.registerEvents();
     // TODO: надо ли вызывать это??
     // this.update();
   }
@@ -33,17 +33,8 @@ class AccountsWidget {
   registerEvents() {
     document.querySelector('.create-account').onclick = (e) => {
       App.getModal('createAccount').open();
-    }
-    let accountsList = this.element.getElementsByClassName('account');
-    
-    for (let el of this.element.getElementsByClassName('account')) {
-      el.onclick = (e) => {
-        e.preventDefault();
-        this.onSelectAccount(el);
-      }
-    }
+    }    
   }
-
 
   /**
    * Метод доступен только авторизованным пользователям
@@ -83,7 +74,7 @@ class AccountsWidget {
   onSelectAccount(element) {
     const activeAccount = document.getElementsByClassName('active');
     if (activeAccount.length > 0) {
-      console.log('remove class active');
+      // console.log('remove class active');
       activeAccount[0].classList.remove('active');
     }
 
@@ -102,7 +93,7 @@ class AccountsWidget {
                <span>${item.name}</span>
                <span>${item.sum}</span>
               </a>
-           </li>`
+           </li>`;
   }
 
   /**
@@ -112,9 +103,11 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data) {
-    // TODO: откуда дублирование вызовов?
-    // console.log('---', data);
     this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(data));
-    this.registerEvents();
+    let el = this.element.lastChild;
+    el.onclick = (e) => {
+      e.preventDefault();
+      this.onSelectAccount(el);
+    };
   }
 }

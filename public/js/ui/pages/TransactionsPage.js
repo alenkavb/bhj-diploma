@@ -134,19 +134,20 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date) {
-    let parts, time;
+    // "2019-09-15 10:24:02"
+    // "2022-08-29T08:51:00.703Z"
+    let parts;
+
     if (date[10] === 'T') {
       parts = date.split('T');
     } else {
       parts = date.split(' ');
     }
 
-    let [year, mon, day] = parts[0].split('-');
-    if (date[19] === '.') {
-      time = parts[1].split('.');
-    }
+    parts[1] = parts[1].split('.')[0];
 
-    let [hour, min, sec] = time[0].split(':');
+    let [year, mon, day] = parts[0].split('-');
+    let [hour, min, sec] = parts[1].split(':');
 
     let dt = new Date();
     dt.setFullYear(year);
