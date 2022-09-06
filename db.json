@@ -17,6 +17,12 @@
       "email": "test@test",
       "password": "test",
       "id": "305xz6f0l7ed120u"
+    },
+    {
+      "name": "Елена",
+      "email": "elena@test",
+      "password": "elena",
+      "id": "305xz62cl7ps6jto"
     }
   ],
   "accounts": [
@@ -49,6 +55,11 @@
       "name": "qqq",
       "user_id": "1",
       "id": "2k76z1jnl7mq9ozr"
+    },
+    {
+      "name": "Сбер",
+      "user_id": "305xz62cl7ps6jto",
+      "id": "305xz62cl7ps6ykt"
     }
   ],
   "transactions": [
@@ -267,6 +278,42 @@
       "account_id": "305xz8t0l7edfk9d",
       "user_id": "305xz6f0l7ed120u",
       "created_at": "2022-08-30T01:58:14.543Z"
+    },
+    {
+      "id": "305xz62cl7ps7cmx",
+      "type": "income",
+      "name": "Аванс",
+      "sum": 10000,
+      "account_id": "305xz62cl7ps6ykt",
+      "user_id": "305xz62cl7ps6jto",
+      "created_at": "2022-09-06T05:59:08.985Z"
+    },
+    {
+      "id": "305xz62cl7ps8jgx",
+      "type": "expense",
+      "name": "сумка",
+      "sum": 2000,
+      "account_id": "305xz62cl7ps6ykt",
+      "user_id": "305xz62cl7ps6jto",
+      "created_at": "2022-09-06T06:00:04.497Z"
+    },
+    {
+      "id": "305xzyol7pucjjj",
+      "type": "income",
+      "name": "доход",
+      "sum": 3000,
+      "account_id": "2k76z1jnl7mq9ozr",
+      "user_id": "1",
+      "created_at": "2022-09-06T06:59:10.446Z"
+    },
+    {
+      "id": "305xz60gl7pvdo5v",
+      "type": "income",
+      "name": "Кэшбек",
+      "sum": 500,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2022-09-06T07:28:02.706Z"
     }
   ]
 }

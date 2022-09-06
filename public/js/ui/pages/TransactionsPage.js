@@ -153,7 +153,13 @@ class TransactionsPage {
     dt.setFullYear(year);
     dt.setMonth(mon - 1);
     dt.setDate(day);
-    dt.setHours(hour);
+
+    if (date.includes('.')) {
+      dt.setHours(+hour + 7);
+    } else {
+      dt.setHours(hour);
+    }
+
     dt.setMinutes(min);
     dt.setSeconds(sec);
 
